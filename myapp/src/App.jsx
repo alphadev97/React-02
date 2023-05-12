@@ -1,25 +1,24 @@
-// Default Import
-
-import MyHeading from "./components/MyHeading";
-
-// Import specific function
-import { MyHeadingLil, MyHeadingLil2 } from "./components/MyHeading";
-
-// Import specific function with your name using "as"
-import { MyHeadingLil3 as MerName } from "./components/MyHeading";
-
-// You can merge both 1st and 2nd import like this
-// import MyHeading, { MyHeadingLil, MyHeadingLil2 } from "./components/MyHeading";
+import Header from "./components/Header";
+import "./styles/App.css";
+import "./styles/Header.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Product from "./components/Product";
 
 function App() {
   return (
-    <div>
-      <MyHeading name="Props" text="Good" />
-      <MyHeadingLil />
-      <MyHeadingLil2 />
-      <MerName />
-      <h1>Welcome to React</h1>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="*" element={<div>Page not found 404</div>} />
+      </Routes>
+    </Router>
   );
 }
 
