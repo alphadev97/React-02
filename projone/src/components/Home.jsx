@@ -10,7 +10,7 @@ import {
 const Home = () => {
   return (
     <>
-      <div className="home">
+      <div className="home" id="home">
         <main>
           <h1>Alpha97</h1>
           <p>Solutions to all your problems</p>
