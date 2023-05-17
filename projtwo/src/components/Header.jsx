@@ -20,6 +20,7 @@ const Header = () => {
   return (
     <>
       <Button
+        zIndex={'overlay'}
         pos={'fixed'}
         top={'4'}
         left={'4'}
