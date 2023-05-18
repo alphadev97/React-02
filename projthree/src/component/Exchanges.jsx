@@ -10,21 +10,30 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Loader from "./Loader";
+import ErrorComponent from "./ErrorComponent";
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchExchanges = async () => {
-      const { data } = await axios.get(`${server}/exchanges`);
+      try {
+        const { data } = await axios.get(`${server}/exchanges`);
 
-      setExchanges(data);
-      setLoading(false);
-      console.log(data);
+        setExchanges(data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
     };
     fetchExchanges();
   }, []);
+
+  if (error)
+    return <ErrorComponent message={"Error while fetching exchanges"} />;
 
   return (
     <Container maxW={"container.xl"}>
@@ -32,7 +41,7 @@ const Exchanges = () => {
         <Loader />
       ) : (
         <>
-          <HStack wrap={"wrap"}>
+          <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
             {exchanges.map((i) => (
               <ExchangeCard
                 key={i.id}
