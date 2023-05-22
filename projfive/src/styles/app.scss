@@ -7,6 +7,10 @@
 @import "work";
 @import "timeline";
 @import "services";
+@import "testimonial";
+@import "contact";
+@import "footer";
+@import "mediaquery";
 
 * {
   margin: 0%;
@@ -26,6 +30,7 @@ body {
 }
 
 .disableBtn {
-  background-color: rgb(237, 237, 237);
-  cursor: not-allowed;
+  color: $color6 !important;
+  background-color: rgb(207, 207, 207) !important;
+  cursor: not-allowed !important;
 }
