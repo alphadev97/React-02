@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 import { BsArrowUpRight, BsChevronDown } from "react-icons/bs";
 import me from "../assets/logo-haris.png";
 
-const Home = () => {
+const Home = ({ ratio }) => {
   const clientCount = useRef(null);
   const projectCount = useRef(null);
 
@@ -73,10 +73,12 @@ const Home = () => {
           <article>
             <p>
               +
-              <motion.span
-                whileInView={animationsClinetsCount}
-                ref={clientCount}
-              ></motion.span>
+              {ratio < 2 && (
+                <motion.span
+                  whileInView={animationsClinetsCount}
+                  ref={clientCount}
+                ></motion.span>
+              )}
             </p>
             <span>Clients Worldwide</span>
           </article>
@@ -84,11 +86,13 @@ const Home = () => {
           <aside>
             <article>
               <p>
-                +{" "}
-                <motion.span
-                  whileInView={animationsProjectsCount}
-                  ref={projectCount}
-                ></motion.span>
+                +
+                {ratio < 2 && (
+                  <motion.span
+                    whileInView={animationsProjectsCount}
+                    ref={projectCount}
+                  ></motion.span>
+                )}
               </p>
               <span>Projects Delivered</span>
             </article>
